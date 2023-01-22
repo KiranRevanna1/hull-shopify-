@@ -1,0 +1,88 @@
+.product {
+  @apply border-b;
+
+  &--content {
+    @apply relative grid md:grid-cols-2 md:gap-1 md:bg-pageText;
+  }
+
+  &--gallery {
+    @apply relative mb-48 md:mb-0 xs:p-32 md:p-96 bg-pageBG border-b md:border-none;
+
+    .carousel {
+      @apply max-w-xl mx-auto;
+    }
+  }
+
+  &--details {
+    @apply bg-pageBG flex flex-col;
+  }
+
+  &--info {
+    @apply w-full max-w-xl m-auto p-16 sm:p-32;
+  }
+
+  &--header {
+    @apply flex mb-32 pb-8 border-b;
+
+    .price {
+      @apply flex flex-col items-end mt-auto ml-auto;
+
+      &--current {
+        @apply text-20 leading-150 font-semibold;
+      }
+
+      &--discount {
+        @apply mb-8 p-4 rounded-md bg-pageText text-pageBG text-10 leading-125 tracking-widest font-semibold uppercase;
+      }
+    }
+  }
+
+  &--name {
+    @apply m-0 text-30 leading-135;
+  }
+
+  &--title {
+    @apply pr-32 sm:pr-48;
+  }
+
+  &--variant {
+    @apply flex items-center mb-8 text-14 leading-160 tracking-wider font-semibold uppercase;
+
+    .label {
+      @apply flex-shrink-0 -my-4 scale-90;
+    }
+  }
+
+  &--options {
+    @apply mt-48;
+  }
+
+  &--actions {
+    @apply sm:flex sticky bottom-0 mt-16 p-16 md:p-32 border-t bg-pageBG is-textured text-center;
+
+    .counter {
+      @apply hidden sm:inline-flex mr-16;
+    }
+  }
+
+  &--waitlist {
+    @apply relative w-full;
+  }
+}
+
+.option {
+  @apply flex mt-16 py-16 border-t;
+
+  &--title {
+    @apply mr-48 text-12 font-semibold uppercase tracking-wider;
+  }
+
+  &--values {
+    @apply flex flex-wrap justify-end ml-auto gap-x-8 gap-y-8;
+    grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
+  }
+
+  &--swatch {
+    @apply clean-btn p-0 bg-transparent;
+  }
+}

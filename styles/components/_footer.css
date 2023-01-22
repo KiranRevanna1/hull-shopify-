@@ -1,0 +1,45 @@
+.footer {
+  @apply relative overflow-hidden;
+  
+  &--grid {
+    @apply grid sm:grid-cols-2 lg:grid-cols-4 gap-1 bg-pageText;
+  }
+
+  &--block {
+    @apply flex flex-col p-32 bg-pageBG text-center lg:text-left;
+  }
+
+  .form {
+    @apply mt-auto;
+  }
+
+  .menu-footer {
+    @apply flex flex-col lg:mb-32;
+
+    a {
+      @apply inline-block py-8 text-16 hover:opacity-40;
+    }
+  }
+
+  .menu-social {
+    @apply inline-flex flex-wrap my-16 mx-auto lg:mt-0 lg:mx-0;
+
+    a {
+      @apply block w-36 h-36 hover:opacity-40;
+
+      svg {
+        @apply block w-full h-full;
+      }
+    }
+  }
+
+  &--extras {
+    @apply mt-auto;
+  }
+
+  &--disclaimer {
+    p {
+      @apply text-14;
+    }
+  }
+}

@@ -1,0 +1,137 @@
+.carousel {
+  @apply relative w-full bg-black;
+
+  &--container {
+    @apply relative overflow-hidden;
+  }
+
+  &--slides {
+    @apply flex relative;
+    touch-action: pan-y;
+    will-change: transform;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -khtml-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+
+    .has-drag & {
+      cursor: move;
+      cursor: grab;
+
+      &:active {
+        cursor: grabbing;
+      }
+    }
+  }
+
+  &--slide {
+    @apply relative flex-grow-0 flex-shrink-0 w-full min-h-full overflow-hidden;
+  }
+
+  &--thumbs {
+    @apply flex flex-col absolute top-0 w-80 m-3;
+
+    button {
+      @apply m-4;
+
+      &.is-active {
+        /* active state styles */
+      }
+    }
+  }
+
+  &--hud {
+    @apply flex justify-center absolute bottom-0 inset-x-0 translate-y-1/2 pointer-events-none;
+  }
+
+  &--nav {
+    @apply flex flex-row items-center relative rounded-full bg-pageBG border p-4 pointer-events-auto;
+  }
+
+  &--prev,
+  &--next {
+    @apply clean-btn w-32 h-32 p-8 rounded-full bg-transparent transition-colors duration-300;
+
+    &:hover {
+      background: hsla(var(--pageText-hsl), .2);
+    }
+
+    svg {
+      @apply block;
+    }
+  }
+
+  &--prev {
+    @apply scale-x-[-1];
+  }
+
+  &--status {
+    @apply flex items-center justify-center relative h-32 mx-8;
+  }
+
+  &--counter {
+    @apply relative grid grid-cols-2 gap-1 h-32 rounded-full bg-pageText text-pageBG;
+
+    .carousel--dots + & {
+      @apply ml-8 mr-4;
+    }
+
+    &::after {
+      @apply absolute left-1/2 -translate-x-1/2 inset-y-12 w-1 bg-pageBG opacity-30;
+      content: "";
+    }
+  }
+
+  &--counter-item {
+    @apply relative flex flex-col overflow-hidden p-8 text-12 leading-125 font-semibold;
+
+    &.is-current {
+      @apply pl-12;
+    }
+
+    &.is-total {
+      @apply pr-12;
+    }
+
+    .counter-flipper {
+      @apply relative overflow-hidden;
+      
+      span {
+        @apply block;
+        font-feature-settings: "tnum";
+        will-change: transform;
+    
+        + span {
+          @apply absolute inset-x-0 top-0;
+        }
+      }
+    }
+  }
+
+  &--dots {
+    @apply relative flex items-center h-32;
+    
+    button {
+      @apply clean-btn p-4 bg-transparent;
+
+      &::before {
+        @apply block relative w-8 h-8 bg-pageText rounded-full opacity-30;
+        transition: opacity .1s linear, transform .4s cubic-bezier(0.22, 1, 0.36, 1);
+        content: "";
+      }
+
+      &:hover {
+        &::before {
+          @apply opacity-100;
+        }
+      }
+
+      &.is-active {
+        /* active state styles */
+        &::before {
+          @apply opacity-100 scale-150;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,127 @@
+.btn {
+  /* default style button */
+  @apply clean-btn inline-block relative bg-pageBG px-20 py-9 text-center rounded-full border font-sans font-semibold text-12 leading-125 transition-colors;
+
+  /* default: hover */
+  &:not(.is-primary):not(.is-white):not(.is-text):not(.is-disabled):not(.is-soldout) {
+    &.is-active,
+    &:hover {
+      @apply bg-pageText border-pageText text-pageBG;
+    }
+  }
+
+
+  /* primary style button */
+  &.is-primary {
+    @apply bg-pageText border-pageText text-pageBG;
+  }
+
+
+  /* text-based button */
+  &.is-text {
+    @apply py-4 px-8 bg-transparent border-transparent;
+
+    &:hover {
+      background: hsla(var(--pageText-hsl), .1);
+    }
+
+    &.is-disabled,
+    &.is-soldout {
+      @apply opacity-50;
+    }
+  }
+
+
+  /* small sized button */
+  &.is-small {
+    @apply px-12 py-4;
+  }
+
+
+  /* large sized button */
+  &.is-large {
+    @apply text-24 leading-125 font-normal px-28;
+  }
+
+  /* full width button */
+  &.is-block {
+    @apply block w-full;
+  }
+
+  /* loading button state */
+  &.is-loading {
+    @apply cursor-wait !important;
+  }
+
+  /* disabled button state */
+  &.is-disabled,
+  &.is-soldout {
+    @apply bg-pageBG text-current;
+
+    &::after {
+      @apply absolute -inset-1 bg-pageBG rounded-full opacity-50;
+      content: "";
+    }
+  }
+  &.is-disabled:not(.is-soldout) {
+    @apply cursor-default pointer-events-none;
+  }
+
+
+  /* inverted style buttons */
+  &.is-inverted,
+  .is-inverted & {
+    @apply bg-pageText border-pageBG text-pageBG;
+
+    /* inverted: hover */
+    &:not(.is-primary):not(.is-white):not(.is-text):not(.is-disabled):not(.is-soldout) {
+      &.is-active,
+      &:hover {
+        @apply bg-pageBG border-pageBG text-pageText;
+      }
+    }
+
+
+    /* primary: inverted */
+    &.is-primary {
+      @apply bg-pageBG border-pageBG text-pageText;
+    }
+
+
+    /* text-based button */
+    &.is-text {
+      @apply bg-transparent border-transparent;
+
+      &:hover {
+        background: hsla(var(--pageBG-hsl), .1);
+      }
+    }
+
+
+    /* disabled button state */
+    &.is-disabled,
+    &.is-soldout {
+      @apply bg-pageText text-pageBG;
+
+      &::after {
+        @apply bg-pageText;
+        content: "";
+      }
+    }
+  }
+
+  /* white style button */
+  &.is-white {
+    @apply bg-white border-white text-black;
+
+    /* disabled button state */
+    &.is-disabled,
+    &.is-soldout {
+      @apply bg-white text-black text-opacity-20;
+
+      &::after {
+        @apply hidden;
+      }
+    }
+  }
+}

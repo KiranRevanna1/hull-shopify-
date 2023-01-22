@@ -1,0 +1,59 @@
+.ar {
+  @apply relative overflow-hidden;
+
+  &.has-fill {
+    @apply absolute inset-0;
+  }
+
+  img {
+    @apply block absolute top-1/2 left-1/2 z-1 opacity-0;
+    width: calc(100% + 1px); /* helps with half pixel renderings */
+    height: calc(100% + 1px); /* helps with half pixel renderings */
+    transform: translate3d(-50%, -50%, 0);
+    transition: opacity 0.4s linear;
+
+    &.is-loaded {
+      @apply opacity-100;
+    }
+  }
+
+  &--placeholder {
+    @apply absolute inset-0;
+    filter: grayscale(1);
+    transform: scale(1.15);
+    transition: opacity 0s 0.4s linear;
+
+    &.is-loaded {
+      @apply opacity-0;
+    }
+
+    &::after {
+      @apply absolute inset-0 z-1;
+      backdrop-filter: blur(1rem) contrast(1.5);
+      content: '';
+    }
+
+    img {
+      @apply opacity-100;
+    }
+  }
+}
+
+.video-loop {
+  @apply absolute inset-0 bg-black;
+
+  [data-theme='metal'] & {
+    &::after {
+      @apply absolute inset-0 bg-pageText mix-blend-multiply;
+      content: '';
+    }
+  }
+
+  iframe {
+    @apply absolute top-1/2 left-1/2 transform-gpu -translate-x-1/2 -translate-y-1/2 w-screen min-h-screen;
+
+    [data-theme='metal'] & {
+      filter: invert(1) blur(0px) grayscale(1);
+    }
+  }
+}

@@ -1,0 +1,18 @@
+html {
+  &.is-loading,
+  &.is-loading * {
+    @apply cursor-wait !important;
+  }
+}
+
+body {
+  @apply flex flex-col;
+}
+
+.section {
+  @apply relative px-16 py-48 sm:p-32 md:py-64 lg:py-80 border-b;
+
+  &--content {
+    @apply mx-auto;
+  }
+}

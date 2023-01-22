@@ -1,0 +1,34 @@
+.dropdown {
+  @apply relative z-1;
+
+  &.is-open {
+    @apply sm:z-3;
+
+    .dropdown--content {
+      @apply sm:opacity-100 sm:visible sm:pointer-events-auto;
+    }
+  }
+
+  /* Customize dropdown navigation buttons: */
+  /* (you should mostly offload these to the general header links/button styles) */
+  &--toggle {
+  }
+
+  &--icon {
+    @apply inline-flex align-middle mt-[-.15em] has-indicator;
+  }
+
+  &--content {
+    @apply relative h-0 overflow-y-hidden;
+    @apply sm:absolute sm:top-full sm:whitespace-nowrap sm:overflow-y-visible sm:opacity-0 sm:invisible sm:pointer-events-none sm:transition-all;
+    @apply sm:!h-auto;
+  }
+
+  &--nav {
+    @apply block relative ml-8 pl-[10px];
+
+    a {
+      color: hsla(var(--pageText-hsl), 0.3);
+    }
+  }
+}

@@ -1,0 +1,57 @@
+@tailwind components;
+
+@layer components {
+  .clean-btn {
+    @apply appearance-none no-underline cursor-pointer font-inherit;
+  }
+
+  .hide-scrollbar {
+    -ms-overflow-style:none;
+    scrollbar-width:none;
+    
+    &::-webkit-scrollbar{
+      @apply hidden;
+    }
+  }
+
+  .is-textured {
+    background-image: radial-gradient(var(--pageText) 9%, transparent 9%), radial-gradient(var(--pageText) 9%, transparent 9%);
+    background-position: 0 0, 8px 8px;
+    background-size: 16px 16px;
+  }
+
+  .is-textured-dark {
+    background-color: var(--pageText);
+    background-image: radial-gradient(var(--pageBG) 9%, transparent 9%), radial-gradient(var(--pageBG) 9%, transparent 9%);
+    background-position: 0 0, 8px 8px;
+    background-size: 16px 16px;
+  }
+
+  .has-indicator {
+    &::before {
+      @apply inline-block mr-8 rounded-full border w-10 h-10;
+      content: "";
+    }
+
+    &.is-open,
+    .is-open &,
+    &.is-active {
+      &::before {
+        @apply bg-pageText;
+        animation: pulse 2s infinite;
+      }
+    }
+  }
+}
+
+@keyframes pulse {
+  0% {
+		box-shadow: 0 0 0 0 hsla(var(--pageText-hsl), 0.3);
+  }
+  70% {
+		box-shadow: 0 0 0 8px hsla(var(--pageText-hsl), 0);
+  }
+  100% {
+		box-shadow: 0 0 0 0 hsla(var(--pageText-hsl), 0);
+  }
+}

@@ -1,0 +1,31 @@
+.listbox {
+  @apply relative z-2;
+  
+  &--btn {
+    @apply clean-btn relative z-1 p-0 text-left bg-transparent text-16;
+  }
+
+  &--content {
+    @apply absolute top-full overflow-hidden;
+
+    .is-right & {
+      @apply right-0;
+    }
+
+    .is-left & {
+      @apply left-0;
+    }
+  }
+
+  &--dropdown {
+    @apply bg-pageText overflow-hidden whitespace-nowrap;
+  }
+
+  &--options {
+    @apply flex flex-col p-8;
+  }
+  
+  &--item {
+    @apply clean-btn bg-transparent text-pageBG text-left px-8 py-4 text-14 uppercase leading-150 transition-colors hover:bg-pageBG hover:text-pageText;
+  }
+}

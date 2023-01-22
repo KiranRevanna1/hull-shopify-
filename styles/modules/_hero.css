@@ -1,0 +1,32 @@
+.hero {
+  @apply grid relative overflow-hidden min-h-screen border-b;
+  min-height: calc(var(--vh, 1vh) * 100);
+
+  @media (max-height: 500px) {
+    min-height: 500px;
+  }
+  
+  &--bg {
+    @apply relative w-full  h-full;
+    grid-area: 1/-1;
+
+    &.is-desktop {
+      @apply hidden sm:block;
+    }
+
+    &.is-mobile {
+      @apply sm:hidden;
+    }
+  }
+
+  &--overlay {
+    @apply z-2 flex flex-col justify-center;
+    grid-area: 1/-1;
+  }
+
+  &--content {
+    @apply w-full max-w-5xl mx-auto px-4 text-center text-white;
+    padding-top: calc(var(--headerHeight) + 2rem);
+    padding-bottom: var(--headerHeight);
+  }
+}

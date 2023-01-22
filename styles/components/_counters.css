@@ -1,0 +1,73 @@
+.counter {
+  @apply inline-grid h-full p-8 border rounded-full bg-pageBG text-pageText;
+  grid-template-columns: auto auto auto;
+
+  &.is-inverted {
+    @apply bg-transparent text-pageBG;
+  }
+
+  &.is-small {
+    @apply p-4;
+  }
+
+  &--down,
+  &--up {
+    @apply self-center w-32 h-32 -my-1 p-8 bg-transparent rounded-full transition-colors duration-300;
+
+    .cart & {
+      @apply my-0;
+    }
+
+    &:hover {
+      background: hsla(var(--pageText-hsl), .2);
+
+      .is-inverted & {
+        background: hsla(var(--pageBG-hsl), .2);
+      }
+    }
+
+    svg {
+      @apply block;
+    }
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    @apply m-0 appearance-none;
+  }
+  
+  &--amount {
+    @apply relative overflow-hidden w-48 text-12 font-mono;
+
+    .cart & {
+      @apply w-32;
+    }
+
+    &:focus-within {
+      outline: 1px dashed var(--pageText);
+      outline-offset: 2px;
+
+      .is-inverted & {
+        outline-color: var(--pageBG);
+      }
+      
+      body:not(.is-tabbing) & {
+        outline: none;
+      }
+    }
+  }
+
+  &--input {
+    @apply flex relative w-full h-full;
+    will-change: transform;
+
+    + .counter--input {
+      @apply absolute inset-0;
+    }
+    
+    input {
+      @apply relative bg-transparent border-0 rounded-none appearance-none p-4 w-full h-full text-center text-current text-16 outline-none;
+      font-feature-settings: "tnum";
+    }
+  }
+}
